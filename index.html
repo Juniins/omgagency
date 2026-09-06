@@ -224,9 +224,7 @@ body.menu-on .menu-painel{transform:translateY(0);visibility:visible;pointer-eve
 /* ---------- seção malva ---------- */
 .malva{background:var(--malva);color:var(--vinho)}
 .malva h2{color:var(--vinho)}
-.malva .dep{border-left:1px solid var(--vinho);background:none;padding-left:26px}
-.malva .dep q{color:var(--vinho);font-weight:300}
-.malva .dep footer{color:rgba(43,10,24,.7)}
+.malva .lede{color:rgba(43,10,24,.78)}
 .malva{border-top:1px solid rgba(43,10,24,.25);border-bottom:1px solid rgba(43,10,24,.25)}
 
 /* ---------- processo ---------- */
@@ -262,11 +260,25 @@ body.menu-on .menu-painel{transform:translateY(0);visibility:visible;pointer-eve
 @media(max-width:520px){.cards{grid-template-columns:1fr}}
 
 /* ---------- depoimentos ---------- */
-.deps{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,68px);margin-top:clamp(32px,4vw,52px)}
-.dep{border-left:1px solid var(--rosa);padding-left:28px;background:linear-gradient(90deg,rgba(43,10,24,.85),rgba(43,10,24,0) 72%);padding-top:6px;padding-bottom:6px}
-.dep q{font-size:clamp(18px,1.9vw,22px);line-height:1.45;font-weight:200;display:block}
-.dep footer{margin-top:20px;font-size:13.5px;color:var(--fumaca);letter-spacing:.03em}
-@media(max-width:760px){.deps{grid-template-columns:1fr}}
+.deps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,24px);margin-top:clamp(34px,4vw,54px)}
+.dep{
+  display:flex;flex-direction:column;gap:18px;
+  background:var(--branco);border-radius:2px;padding:clamp(24px,2.4vw,32px);
+  box-shadow:0 14px 40px rgba(43,10,24,.25);
+}
+.dep q{font-size:clamp(16px,1.35vw,18px);line-height:1.5;font-weight:300;display:block;color:var(--vinho);quotes:none}
+.dep q::before{
+  content:"”";display:block;font-size:46px;line-height:.5;margin-bottom:18px;
+  color:var(--magenta);font-family:Georgia,serif;
+}
+.dep-quem{display:flex;align-items:center;gap:14px;margin-top:auto;padding-top:20px;border-top:1px solid rgba(43,10,24,.13)}
+.dep-quem img{
+  width:52px;height:52px;flex:none;border-radius:50%;object-fit:cover;
+  box-shadow:0 0 0 1px var(--branco),0 0 0 2px var(--magenta);
+}
+.dep-quem strong{display:block;font-size:13.5px;font-weight:500;font-stretch:112%;text-transform:uppercase;letter-spacing:.06em;color:var(--vinho)}
+.dep-quem span{display:block;font-size:12.5px;color:rgba(43,10,24,.6)}
+@media(max-width:900px){.deps{grid-template-columns:1fr;max-width:520px}}
 
 /* ---------- faq ---------- */
 .faq details{border-bottom:1px solid var(--linha)}
@@ -513,12 +525,25 @@ footer.pe{border-top:1px solid var(--linha);padding:clamp(52px,6vw,76px) 0 40px;
       <h2>O que elas dizem<br>quando ninguém está ouvindo.</h2>
       <div class="deps">
         <div class="dep">
-          <q>Eu já tinha perfil e já vendia. O que mudou foi parar de decidir tudo sozinha às três da manhã.</q>
-          <footer>Nome da criadora — 2 anos de agência</footer>
+          <q>Comecei sem saber nem que nome usar. Em quarenta dias eu tinha marca, público e o primeiro saque.</q>
+          <div class="dep-quem">
+            <img src="criadoras/perfil/leticia-castro.jpg" alt="Letícia Castro">
+            <div><strong>Letícia Castro</strong><span>@leticiacastropriv</span></div>
+          </div>
         </div>
         <div class="dep">
-          <q>Comecei sem saber nem que nome usar. Em quarenta dias eu tinha marca, público e o primeiro saque.</q>
-          <footer>Nome da criadora — 1 ano de agência</footer>
+          <q>Eu já tinha perfil e já vendia. O que mudou foi parar de decidir tudo sozinha às três da manhã.</q>
+          <div class="dep-quem">
+            <img src="criadoras/perfil/becky-santos.jpg" alt="Becky Santos">
+            <div><strong>Becky Santos</strong><span>@beckysantospriv</span></div>
+          </div>
+        </div>
+        <div class="dep">
+          <q>O que mais mudou foi a rotina. Hoje eu gravo, mando para o time e não penso em mais nada além disso.</q>
+          <div class="dep-quem">
+            <img src="criadoras/perfil/lari-fontes.jpg" alt="Lari Fontes">
+            <div><strong>Lari Fontes</strong><span>@larifontespriv</span></div>
+          </div>
         </div>
       </div>
     </div>

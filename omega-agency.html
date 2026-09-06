@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ômega Agency — Agência de criadoras de conteúdo sensível</title>
+<meta name="description" content="Gestão completa para criadoras de conteúdo sensível: identidade, produção, tráfego, plataformas e financeiro. Você aparece, o resto é com a gente.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,200..700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --preto:#000000;
+  --carvao:#0B0A0C;
+  --vinho:#2B0A18;      /* preto quente, faixas de respiro */
+  --vinho-fundo:#1A0610;
+  --branco:#FFFFFF;
+  --rosa:#F7A8D0;        /* cor principal da marca */
+  --magenta:#E4238F;     /* rosa profundo, brilho da logo */
+  --fumaca:#9A939A;      /* texto secundário */
+  --malva:#9C7186;       /* seção quente */
+  --linha:rgba(255,255,255,.13);
+  --linha-rosa:rgba(247,168,208,.34);
+
+  --fonte:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --gut:clamp(20px,5vw,64px);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body.menu-on{overflow:hidden}
+body.menu-on header{background:transparent;backdrop-filter:none}
+body.menu-on header::after{opacity:0}
+body.menu-on .aviso{max-height:0;opacity:0}
+body{
+  margin:0;background:var(--preto);color:var(--branco);
+  font-family:var(--fonte);font-weight:300;font-size:17px;line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+::selection{background:var(--rosa);color:#000}
+:focus-visible{outline:2px solid var(--rosa);outline-offset:3px}
+
+.wrap{max-width:1200px;margin:0 auto;padding:0 var(--gut)}
+
+h1,h2,h3{
+  margin:0;font-weight:500;font-stretch:125%;
+  text-transform:uppercase;letter-spacing:.005em;line-height:1.04;
+}
+h1{font-size:clamp(31px,5.1vw,60px)}
+h2{font-size:clamp(25px,3.5vw,44px)}
+h3{font-size:clamp(16px,1.5vw,19px);letter-spacing:.05em;font-weight:500;font-stretch:112%}
+p{margin:0 0 1.1em}
+.lede{font-size:clamp(17px,1.55vw,20px);max-width:56ch;color:rgba(255,255,255,.74);font-weight:300}
+.sec{padding:clamp(74px,10vw,136px) 0}
+.rosa{color:var(--rosa)}
+
+/* ---------- header ---------- */
+header{position:sticky;top:0;z-index:90;background:rgba(0,0,0,.78);backdrop-filter:blur(16px) saturate(140%)}
+header::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--linha-rosa) 22%,var(--rosa) 50%,var(--linha-rosa) 78%,transparent);
+  opacity:.7;
+}
+.aviso{
+  background:var(--vinho);overflow:hidden;
+  max-height:38px;transition:max-height .32s ease,opacity .25s ease;
+}
+.aviso div{
+  display:flex;align-items:center;justify-content:center;gap:10px;height:38px;
+  font-size:10.5px;font-weight:400;text-transform:uppercase;letter-spacing:.2em;color:var(--rosa);
+}
+.aviso b{font-weight:500;color:var(--branco)}
+.ponto{width:5px;height:5px;border-radius:50%;background:var(--rosa);box-shadow:0 0 9px var(--magenta);animation:pulsa 2.6s ease-in-out infinite}
+@keyframes pulsa{0%,100%{opacity:1}50%{opacity:.25}}
+header.compacto .aviso{max-height:0;opacity:0}
+
+.bar{display:flex;align-items:center;justify-content:space-between;gap:24px;height:80px;transition:height .32s ease}
+header.compacto .bar{height:66px}
+.brand{display:block;width:130px;text-decoration:none;transition:width .32s ease,filter .3s}
+.logo-img{width:100%;height:auto;display:block}
+header.compacto .brand{width:104px}
+.brand:hover{filter:drop-shadow(0 0 14px rgba(228,35,143,.6))}
+nav ul{display:flex;gap:34px;list-style:none;margin:0;padding:0}
+nav a{
+  position:relative;display:block;padding:6px 0;text-decoration:none;
+  font-size:11.5px;font-weight:400;text-transform:uppercase;letter-spacing:.19em;
+  color:rgba(255,255,255,.62);transition:color .2s;
+}
+nav a::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--rosa);
+  transform:scaleX(0);transform-origin:left;transition:transform .28s cubic-bezier(.5,0,.2,1);
+}
+nav a:hover{color:var(--branco)}
+nav a:hover::after{transform:scaleX(1)}
+.bar .btn{padding:13px 24px;font-size:11.5px;letter-spacing:.19em}
+@media(max-width:980px){nav{display:none}}
+
+/* botao e painel do menu no celular */
+.menu-btn{
+  display:none;flex-direction:column;justify-content:center;gap:6px;
+  width:44px;height:44px;padding:0 9px;background:none;border:0;cursor:pointer;z-index:90;
+}
+.menu-btn i{display:block;height:1px;background:var(--branco);transition:transform .3s,opacity .2s}
+.menu-btn i:last-child{width:70%;margin-left:auto}
+body.menu-on .menu-btn i:first-child{transform:translateY(3.5px) rotate(45deg)}
+body.menu-on .menu-btn i:last-child{width:100%;transform:translateY(-3.5px) rotate(-45deg)}
+
+.menu-painel{
+  position:fixed;inset:0;z-index:85;background:rgba(0,0,0,.97);backdrop-filter:blur(8px);
+  display:flex;flex-direction:column;justify-content:center;gap:4px;padding:96px var(--gut) 40px;overflow-y:auto;
+  transform:translateY(-101%);visibility:hidden;pointer-events:none;
+  transition:transform .42s cubic-bezier(.5,0,.15,1),visibility 0s linear .42s;
+}
+body.menu-on .menu-painel{transform:translateY(0);visibility:visible;pointer-events:auto;transition:transform .42s cubic-bezier(.5,0,.15,1),visibility 0s}
+.menu-painel a.item{
+  display:block;padding:15px 0;text-decoration:none;color:var(--branco);
+  font-size:clamp(22px,7vw,32px);font-weight:500;font-stretch:118%;text-transform:uppercase;letter-spacing:.02em;
+  border-bottom:1px solid var(--linha);
+}
+.menu-painel .btn{margin-top:32px;text-align:center}
+.menu-painel .zap-menu{
+  margin-top:16px;text-align:center;text-decoration:none;color:var(--rosa);
+  font-size:12px;text-transform:uppercase;letter-spacing:.18em;
+}
+@media(max-width:980px){.menu-btn{display:flex}}
+@media(min-width:981px){.menu-painel{display:none}}
+@media(max-width:520px){.bar .btn{display:none}}
+@media(max-width:560px){.aviso div{letter-spacing:.12em;font-size:9.5px}}
+
+.btn{
+  display:inline-block;border:0;cursor:pointer;border-radius:2px;text-decoration:none;
+  font-family:var(--fonte);font-size:14.5px;font-weight:500;font-stretch:112%;
+  text-transform:uppercase;letter-spacing:.07em;padding:17px 32px;
+  background:var(--rosa);color:#000;transition:box-shadow .22s,transform .18s,background .18s;
+}
+.btn:hover{background:#fff;transform:translateY(-1px);box-shadow:0 0 30px rgba(247,168,208,.35)}
+.btn-ghost{background:transparent;color:var(--branco);box-shadow:inset 0 0 0 1px rgba(255,255,255,.32)}
+.btn-ghost:hover{background:transparent;color:var(--rosa);box-shadow:inset 0 0 0 1px var(--rosa)}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;padding:clamp(52px,8vw,86px) 0 0;min-height:min(86vh,760px);display:flex;flex-direction:column;justify-content:center}
+.hero::before{
+  content:"";position:absolute;left:8%;top:2%;width:min(900px,96%);height:min(700px,84%);
+  pointer-events:none;
+  background:radial-gradient(ellipse at center,rgba(228,35,143,.26),rgba(43,10,24,.5) 44%,rgba(43,10,24,0) 70%);
+  filter:blur(22px);
+}
+.hero h1{position:relative;margin:0;max-width:15ch;font-size:clamp(36px,7.6vw,88px);letter-spacing:-.012em}
+.hero h1 .linha2{display:block;color:var(--rosa)}
+.hero .lede{margin:28px 0 0;max-width:48ch}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px;position:relative}
+.garantias{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:32px;padding:0;list-style:none;position:relative}
+.garantias li{
+  display:flex;align-items:center;gap:10px;
+  font-size:12.5px;font-weight:400;text-transform:uppercase;letter-spacing:.1em;
+  color:rgba(255,255,255,.82);
+}
+.garantias li::before{content:"";width:5px;height:5px;background:var(--rosa);transform:rotate(45deg);flex:none}
+@media(max-width:600px){.garantias{gap:9px 20px}.garantias li{font-size:11px;letter-spacing:.07em}}
+
+.hero-note{margin-top:26px;margin-bottom:clamp(48px,7vw,84px);font-size:13.5px;color:var(--fumaca);letter-spacing:.02em}
+
+/* faixa corrida no pé do hero */
+.faixa{
+  position:relative;margin-top:auto;overflow:hidden;
+  background:var(--vinho);border-top:1px solid var(--linha-rosa);border-bottom:1px solid var(--linha-rosa);
+}
+.faixa-trilho{display:flex;width:max-content;animation:corre 38s linear infinite}
+.faixa:hover .faixa-trilho{animation-play-state:paused}
+.faixa ul{display:flex;align-items:center;gap:0;list-style:none;margin:0;padding:0}
+.faixa li{
+  display:flex;align-items:center;gap:34px;padding:15px 34px 15px 0;
+  font-size:12px;font-weight:400;font-stretch:118%;text-transform:uppercase;letter-spacing:.22em;
+  color:rgba(255,255,255,.86);white-space:nowrap;
+}
+.faixa li::after{content:"";width:5px;height:5px;background:var(--rosa);transform:rotate(45deg)}
+@keyframes corre{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.faixa-trilho{animation:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* ---------- manifesto ---------- */
+.manifesto{background:var(--carvao);border-top:1px solid var(--linha);border-bottom:1px solid var(--linha)}
+.man-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,80px);align-items:start}
+.man-grid h2{max-width:16ch}
+.man-grid p{max-width:52ch;color:rgba(255,255,255,.72)}
+@media(max-width:820px){.man-grid{grid-template-columns:1fr}}
+
+/* ---------- serviços ---------- */
+.svc-head{display:flex;justify-content:space-between;align-items:flex-end;gap:36px;flex-wrap:wrap;margin-bottom:clamp(34px,5vw,58px)}
+.svc-item{
+  display:grid;grid-template-columns:minmax(210px,.85fr) 1.6fr;gap:clamp(14px,4vw,52px);
+  padding:30px 0;border-top:1px solid var(--linha);align-items:baseline;transition:border-color .25s;
+}
+.svc-item:last-child{border-bottom:1px solid var(--linha)}
+.svc-item:hover{border-top-color:var(--linha-rosa)}
+.svc-item p{margin:0;color:rgba(255,255,255,.68);max-width:58ch;font-size:16px}
+@media(max-width:720px){.svc-item{grid-template-columns:1fr;padding:24px 0}}
+
+/* ---------- números ---------- */
+.nums{background:linear-gradient(180deg,var(--vinho),var(--vinho-fundo));border-top:1px solid var(--linha-rosa);border-bottom:1px solid var(--linha-rosa)}
+.nums-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,3vw,44px)}
+.num{position:relative;padding-left:18px}
+.num::before{content:"";position:absolute;left:0;top:6px;bottom:26px;width:2px;background:var(--rosa);opacity:.8}
+.num b{display:block;font-size:clamp(38px,5.2vw,62px);font-weight:500;font-stretch:125%;line-height:1;color:var(--rosa)}
+.num span{display:block;margin-top:14px;font-size:14px;color:var(--fumaca);max-width:22ch;letter-spacing:.02em}
+@media(max-width:720px){.nums-grid{grid-template-columns:1fr 1fr;gap:34px}}
+
+/* ---------- seção branca ---------- */
+.claro{background:var(--branco);color:var(--vinho)}
+.claro h2,.claro h3{color:var(--vinho)}
+.claro .step{border-bottom-color:rgba(43,10,24,.14)}
+.claro .step:first-of-type{border-top-color:rgba(43,10,24,.14)}
+.claro .step b{color:var(--magenta)}
+.claro .step p{color:rgba(43,10,24,.72)}
+.claro .lede{color:rgba(43,10,24,.7)}
+.claro .selo-claro{
+  display:inline-block;margin-bottom:26px;padding:7px 14px;border-radius:2px;
+  background:var(--vinho);color:var(--rosa);
+  font-size:10.5px;text-transform:uppercase;letter-spacing:.2em;
+}
+
+/* ---------- seção malva ---------- */
+.malva{background:var(--malva);color:var(--vinho)}
+.malva h2{color:var(--vinho)}
+.malva .dep{border-left:1px solid var(--vinho);background:none;padding-left:26px}
+.malva .dep q{color:var(--vinho);font-weight:300}
+.malva .dep footer{color:rgba(43,10,24,.7)}
+.malva{border-top:1px solid rgba(43,10,24,.25);border-bottom:1px solid rgba(43,10,24,.25)}
+
+/* ---------- processo ---------- */
+.step{display:grid;grid-template-columns:60px 1fr;gap:clamp(16px,3vw,38px);padding:28px 0;border-bottom:1px solid var(--linha)}
+.step:first-of-type{border-top:1px solid var(--linha)}
+.step b{font-size:19px;font-weight:500;font-stretch:125%;color:var(--rosa);line-height:1.5}
+.step p{margin:8px 0 0;color:rgba(255,255,255,.68);max-width:56ch;font-size:16px}
+
+/* ---------- elenco ---------- */
+.elenco{background:var(--carvao);border-top:1px solid var(--linha);border-bottom:1px solid var(--linha)}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.6vw,20px);margin-top:clamp(34px,5vw,54px)}
+.card{
+  position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:2px;
+  background:linear-gradient(168deg,var(--vinho) 0%,#12040A 62%,#050405 100%);
+  box-shadow:inset 0 0 0 1px var(--linha);
+  display:flex;align-items:flex-end;padding:24px;
+}
+.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.card::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.94) 0%,rgba(0,0,0,.2) 52%,transparent 100%)}
+.card-info{position:relative;z-index:2}
+.card-info strong{display:block;font-size:19px;font-weight:500;font-stretch:118%;text-transform:uppercase;letter-spacing:.04em}
+.card-info span{font-size:13.5px;color:var(--rosa)}
+.card-info{border-left:2px solid var(--vinho);padding-left:14px}
+.card-open{
+  background:transparent;box-shadow:inset 0 0 0 1px var(--linha-rosa);
+  align-items:center;justify-content:center;text-align:center;text-decoration:none;transition:box-shadow .25s,background .25s;
+}
+.card-open:hover{background:rgba(247,168,208,.06);box-shadow:inset 0 0 0 1px var(--rosa)}
+.card-open::after{display:none}
+.card-open span{font-size:clamp(17px,1.9vw,21px);font-weight:500;font-stretch:118%;text-transform:uppercase;line-height:1.25;letter-spacing:.03em;max-width:13ch;display:block}
+.card-open small{display:block;margin-top:16px;font-size:13px;font-weight:400;text-transform:uppercase;letter-spacing:.12em;color:var(--rosa)}
+@media(max-width:1080px){.cards{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.cards{grid-template-columns:1fr}}
+
+/* ---------- depoimentos ---------- */
+.deps{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,68px);margin-top:clamp(32px,4vw,52px)}
+.dep{border-left:1px solid var(--rosa);padding-left:28px;background:linear-gradient(90deg,rgba(43,10,24,.85),rgba(43,10,24,0) 72%);padding-top:6px;padding-bottom:6px}
+.dep q{font-size:clamp(18px,1.9vw,22px);line-height:1.45;font-weight:200;display:block}
+.dep footer{margin-top:20px;font-size:13.5px;color:var(--fumaca);letter-spacing:.03em}
+@media(max-width:760px){.deps{grid-template-columns:1fr}}
+
+/* ---------- faq ---------- */
+.faq details{border-bottom:1px solid var(--linha)}
+.faq details:first-of-type{border-top:1px solid var(--linha)}
+.faq summary{
+  cursor:pointer;list-style:none;padding:26px 46px 26px 0;position:relative;
+  font-size:clamp(15px,1.6vw,18px);font-weight:500;font-stretch:112%;text-transform:uppercase;letter-spacing:.035em;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{
+  content:"";position:absolute;right:6px;top:50%;width:12px;height:12px;
+  border-right:1px solid var(--rosa);border-bottom:1px solid var(--rosa);
+  transform:translateY(-70%) rotate(45deg);transition:transform .22s;
+}
+.faq details[open] summary::after{transform:translateY(-30%) rotate(-135deg)}
+.faq p{margin:0 0 28px;color:rgba(255,255,255,.7);max-width:62ch;font-size:16px}
+
+/* ---------- casting ---------- */
+.casting{background:linear-gradient(180deg,var(--vinho-fundo),var(--vinho));border-top:1px solid var(--linha-rosa)}
+.cast-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(32px,6vw,86px);align-items:start}
+.form{display:grid;gap:18px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+label{display:block;font-size:12px;text-transform:uppercase;letter-spacing:.12em;color:var(--fumaca);margin-bottom:9px}
+input,select,textarea{
+  width:100%;background:transparent;color:var(--branco);
+  border:0;border-bottom:1px solid var(--linha);border-radius:0;padding:11px 2px;
+  font-family:var(--fonte);font-size:16px;font-weight:300;transition:border-color .2s;
+}
+select{appearance:none;background-image:linear-gradient(45deg,transparent 50%,var(--rosa) 50%),linear-gradient(135deg,var(--rosa) 50%,transparent 50%);background-position:calc(100% - 15px) 20px,calc(100% - 10px) 20px;background-size:5px 5px,5px 5px;background-repeat:no-repeat}
+select option{background:#1A0610;color:var(--branco)}
+textarea{resize:vertical;min-height:88px}
+input:focus,select:focus,textarea:focus{outline:none;border-bottom-color:var(--rosa)}
+.form .btn{margin-top:10px;justify-self:start}
+.form small{font-size:12.5px;color:var(--fumaca);line-height:1.5}
+@media(max-width:880px){.cast-grid{grid-template-columns:1fr}.row{grid-template-columns:1fr}}
+
+/* ---------- whatsapp fixo ---------- */
+.zap-fixo{
+  position:fixed;right:clamp(16px,3vw,28px);bottom:clamp(16px,3vw,28px);z-index:70;
+  display:flex;align-items:center;gap:0;text-decoration:none;
+  background:var(--rosa);color:#000;border-radius:40px;
+  padding:15px;box-shadow:0 10px 34px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.12);
+  transition:gap .3s cubic-bezier(.5,0,.2,1),padding .3s cubic-bezier(.5,0,.2,1),background .2s;
+}
+.zap-fixo svg{width:26px;height:26px;flex:none;fill:currentColor}
+.zap-fixo span{
+  max-width:0;overflow:hidden;white-space:nowrap;
+  font-size:12px;font-weight:500;font-stretch:112%;text-transform:uppercase;letter-spacing:.16em;
+  transition:max-width .34s cubic-bezier(.5,0,.2,1);
+}
+.zap-fixo:hover{background:#fff;gap:12px;padding:15px 24px 15px 18px}
+.zap-fixo:hover span,.zap-fixo:focus-visible span{max-width:190px}
+.zap-fixo::before{
+  content:"";position:absolute;inset:-6px;border-radius:44px;border:1px solid var(--rosa);
+  opacity:.55;animation:anel 3.2s ease-out infinite;pointer-events:none;
+}
+@keyframes anel{0%{transform:scale(.94);opacity:.6}70%{transform:scale(1.18);opacity:0}100%{opacity:0}}
+@media(prefers-reduced-motion:reduce){.zap-fixo::before{animation:none;opacity:.35}}
+
+/* ---------- footer ---------- */
+footer.pe{border-top:1px solid var(--linha);padding:clamp(52px,6vw,76px) 0 40px;font-size:14.5px;background:var(--preto)}
+.pe-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px}
+.pe-grid h4{font-size:11.5px;font-weight:500;text-transform:uppercase;letter-spacing:.14em;margin:0 0 16px;color:var(--rosa)}
+.pe-grid a{color:var(--fumaca);text-decoration:none}
+.pe-grid a:hover{color:var(--branco)}
+.pe p{color:var(--fumaca);margin:0 0 9px}
+.pe .brand{width:162px;margin-bottom:22px}
+.pe-base{margin-top:52px;padding-top:24px;border-top:1px solid var(--linha);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:var(--fumaca);font-size:12.5px;letter-spacing:.04em}
+.selo{display:inline-flex;align-items:center;gap:8px;box-shadow:inset 0 0 0 1px var(--linha-rosa);color:var(--rosa);padding:6px 13px;border-radius:2px}
+@media(max-width:760px){.pe-grid{grid-template-columns:1fr;gap:36px}}
+</style>
+</head>
+<body>
+
+<header id="topoBar">
+  <div class="aviso">
+    <div><span class="ponto"></span> Casting aberto &nbsp;·&nbsp; <b>3 vagas</b> neste mês</div>
+  </div>
+  <div class="wrap bar">
+    <a class="brand" href="#topo" aria-label="Ômega Agency — início">
+      <img class="logo-img" src="logo-omega.png" alt="ÔMEGA">
+    </a>
+    <nav>
+      <ul>
+        <li><a href="#agencia">A agência</a></li>
+        <li><a href="#servicos">O que fazemos</a></li>
+        <li><a href="#processo">Como funciona</a></li>
+        <li><a href="#elenco">Elenco</a></li>
+        <li><a href="#duvidas">Dúvidas</a></li>
+      </ul>
+    </nav>
+    <a class="btn" href="#casting">Casting</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false" aria-controls="menuPainel"><i></i><i></i></button>
+  </div>
+
+</header>
+
+  <div class="menu-painel" id="menuPainel">
+    <a class="item" href="#agencia">A agência</a>
+    <a class="item" href="#servicos">O que fazemos</a>
+    <a class="item" href="#processo">Como funciona</a>
+    <a class="item" href="#elenco">Elenco</a>
+    <a class="item" href="#duvidas">Dúvidas</a>
+    <a class="btn" href="#casting">Entrar no casting</a>
+    <a class="zap-menu" href="https://wa.me/5562996363181?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20a%20%C3%94mega%21%20Vou%20enviar%20meus%20links%20aqui%20%28Instagram%2C%20Tiktok%20ou%20outro%29%3A">Falar no WhatsApp</a>
+  </div>
+
+
+<main id="topo">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <h1>A última letra do alfabeto.<span class="linha2">A última agência que você vai precisar.</span></h1>
+      <p class="lede">Gestão completa para criadoras de conteúdo sensível: identidade, produção, tráfego, plataformas e dinheiro entrando na conta certa. Você aparece. O resto é com a gente.</p>
+      <div class="hero-cta">
+        <a class="btn" href="#casting">Entrar no casting</a>
+        <a class="btn btn-ghost" href="#agencia">Ver como trabalhamos</a>
+      </div>
+      <ul class="garantias">
+        <li>Sem taxa de entrada</li>
+        <li>Se você não fatura, a agência não recebe</li>
+        <li>Contrato com cláusula de saída</li>
+      </ul>
+      <p class="hero-note">Mais de 20 criadoras sob gestão. Poucas vagas por mês — atenção não se divide bem.</p>
+    </div>
+
+    <div class="faixa" aria-hidden="true">
+      <div class="faixa-trilho">
+        <ul>
+          <li>Identidade</li><li>Produção</li><li>Tráfego</li><li>Plataformas</li><li>Atendimento</li><li>Financeiro</li><li>Proteção de imagem</li>
+        </ul>
+        <ul>
+          <li>Identidade</li><li>Produção</li><li>Tráfego</li><li>Plataformas</li><li>Atendimento</li><li>Financeiro</li><li>Proteção de imagem</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- MANIFESTO -->
+  <section class="sec manifesto" id="agencia">
+    <div class="wrap man-grid">
+      <h2>Beleza abre a porta.<br><span class="rosa">Estrutura</span> segura ela aberta.</h2>
+      <div>
+        <p>Quase nenhuma criadora para por falta de talento. Para por cansaço. Gravar, editar, postar, responder mensagem às duas da manhã, subir anúncio, precificar, cobrar, brigar com saque — tudo sozinha, todo dia, sem ninguém para dizer se o número está bom.</p>
+        <p>A Ômega existe para tirar seis dessas sete tarefas das suas mãos. Você entrega presença e conteúdo. A agência entrega método, equipe e relatório.</p>
+        <p>Trabalhamos com quem quer construir carreira, não fazer caixa por três meses. Por isso somos seletivos na entrada e transparentes no contrato.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS -->
+  <section class="sec" id="servicos">
+    <div class="wrap">
+      <div class="svc-head">
+        <h2>Tudo que existe entre<br>o conteúdo e o dinheiro.</h2>
+        <p class="lede" style="max-width:36ch;margin:0">Seis frentes, uma equipe. Nada terceirizado para freelancer que some.</p>
+      </div>
+      <div>
+        <div class="svc-item">
+          <h3>Identidade e posicionamento</h3>
+          <p>Nome artístico, personagem, nicho e a promessa que faz alguém assinar. Definido antes da primeira foto, não depois do primeiro fracasso.</p>
+        </div>
+        <div class="svc-item">
+          <h3>Produção e edição</h3>
+          <p>Roteiro, direção, corte, capa e calendário. Conteúdo pensado para segurar assinatura — não só para render clique e cancelamento no mês seguinte.</p>
+        </div>
+        <div class="svc-item">
+          <h3>Tráfego e distribuição</h3>
+          <p>Instagram, TikTok, X, Reddit, Telegram e mídia paga. Público certo, no volume certo, todos os dias, com verba acompanhada de perto.</p>
+        </div>
+        <div class="svc-item">
+          <h3>Plataformas e vendas</h3>
+          <p>Privacy e afins: precificação, campanhas, conteúdo avulso, upsell e recuperação de quem cancelou. A parte que ninguém te ensina.</p>
+        </div>
+        <div class="svc-item">
+          <h3>Atendimento aos fãs</h3>
+          <p>Equipe treinada respondendo no seu tom e no seu horário. Fã bem atendido renova. Fã esquecido vira reembolso.</p>
+        </div>
+        <div class="svc-item">
+          <h3>Financeiro e proteção</h3>
+          <p>Contrato claro, recebimentos organizados, remoção de conteúdo vazado e defesa da sua imagem fora das plataformas.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NÚMEROS -->
+  <section class="sec nums">
+    <div class="wrap">
+      <div class="nums-grid">
+        <div class="num"><b>22+</b><span>criadoras sob gestão hoje</span></div>
+        <div class="num"><b>30</b><span>dias entre assinar e estrear</span></div>
+        <div class="num"><b>7</b><span>plataformas trabalhadas em paralelo</span></div>
+        <div class="num"><b>4h</b><span>tempo máximo de resposta a um fã</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESSO -->
+  <section class="sec claro" id="processo">
+    <div class="wrap">
+      <span class="selo-claro">Cinco etapas</span>
+      <h2 style="margin-bottom:clamp(32px,4vw,54px)">Do formulário ao<br>primeiro depósito.</h2>
+      <div class="step"><b>1</b><div><h3>Candidatura</h3><p>Você preenche o formulário desta página. Leva dois minutos e não precisa mandar foto nenhuma nessa etapa.</p></div></div>
+      <div class="step"><b>2</b><div><h3>Conversa</h3><p>Trinta minutos por chamada. A gente olha seu perfil, seus números e diz na cara se dá ou não dá.</p></div></div>
+      <div class="step"><b>3</b><div><h3>Proposta</h3><p>Metas, divisão, prazo e o que cada lado entrega. Escrito. Você lê com calma, e com advogado se quiser.</p></div></div>
+      <div class="step"><b>4</b><div><h3>Montagem</h3><p>Primeiros 30 dias: identidade, perfis abertos, acervo inicial gravado e canais de tráfego no ar.</p></div></div>
+      <div class="step"><b>5</b><div><h3>Escala</h3><p>Rotina semanal de produção, verba subindo conforme o retorno e relatório mensal com números abertos.</p></div></div>
+    </div>
+  </section>
+
+  <!-- ELENCO -->
+  <section class="sec elenco" id="elenco">
+    <div class="wrap">
+      <div class="svc-head" style="margin-bottom:0">
+        <h2>Quem já assinou<br>com a gente.</h2>
+        <p class="lede" style="max-width:34ch;margin:0">Nomes construídos do zero e perfis destravados depois de meses parados.</p>
+      </div>
+      <div class="cards">
+        <!-- Foto 3:4. Se o arquivo nao existir, o card cai no fundo vinho automaticamente. -->
+        <div class="card">
+          <img src="criadoras/lari-fontes.jpg" alt="Lari Fontes" onerror="this.remove()">
+          <div class="card-info"><strong>Lari Fontes</strong><span>@larifontespriv</span></div>
+        </div>
+        <div class="card">
+          <img src="criadoras/becky-santos.jpg" alt="Becky Santos" onerror="this.remove()">
+          <div class="card-info"><strong>Becky Santos</strong><span>@beckysantospriv</span></div>
+        </div>
+        <div class="card">
+          <img src="criadoras/leticia-castro.jpg" alt="Leticia Castro" onerror="this.remove()">
+          <div class="card-info"><strong>Letícia Castro</strong><span>@leticiacastropriv</span></div>
+        </div>
+        <a class="card card-open" href="#casting">
+          <div><span>O próximo nome aqui pode ser o seu</span><small>Entrar no casting</small></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEPOIMENTOS -->
+  <section class="sec malva">
+    <div class="wrap">
+      <h2>O que elas dizem<br>quando ninguém está ouvindo.</h2>
+      <div class="deps">
+        <div class="dep">
+          <q>Eu já tinha perfil e já vendia. O que mudou foi parar de decidir tudo sozinha às três da manhã.</q>
+          <footer>Nome da criadora — 2 anos de agência</footer>
+        </div>
+        <div class="dep">
+          <q>Comecei sem saber nem que nome usar. Em quarenta dias eu tinha marca, público e o primeiro saque.</q>
+          <footer>Nome da criadora — 1 ano de agência</footer>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="sec faq" id="duvidas">
+    <div class="wrap">
+      <h2 style="margin-bottom:clamp(30px,4vw,50px)">Perguntas que você<br>ia fazer na call.</h2>
+      <details>
+        <summary>Preciso mostrar o rosto?</summary>
+        <p>Não é obrigatório, mas é o que a gente vai te recomendar. Sem rosto dá para faturar, só que o teto é bem mais baixo e a construção é mais lenta. Mostramos os números das duas rotas antes de você decidir.</p>
+      </details>
+      <details>
+        <summary>Como funciona a divisão?</summary>
+        <p>Percentual sobre o que a gente ajuda a gerar, sem taxa de entrada e sem mensalidade fixa. Se você não fatura, a agência não recebe. O número exato sai na proposta, depois de olhar seu caso.</p>
+      </details>
+      <details>
+        <summary>Sou obrigada a assinar exclusividade?</summary>
+        <p>O contrato tem prazo definido e cláusula de saída. Você recebe o documento antes de qualquer compromisso e pode revisar com quem quiser.</p>
+      </details>
+      <details>
+        <summary>Já tenho perfil rodando. Serve para mim?</summary>
+        <p>Serve, e é boa parte do nosso trabalho. Perfil parado costuma ter problema de distribuição e de oferta, não de conteúdo.</p>
+      </details>
+      <details>
+        <summary>Preciso morar em Goiânia?</summary>
+        <p>Não. A gestão é remota e atendemos o Brasil inteiro. Produção presencial é combinada caso a caso.</p>
+      </details>
+      <details>
+        <summary>Vocês aceitam quem está começando do zero?</summary>
+        <p>Aceitamos, desde que exista disponibilidade real de tempo. Começar do zero é trabalho, não sorte: os primeiros 60 dias exigem presença quase diária.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- CASTING -->
+  <section class="sec casting" id="casting">
+    <div class="wrap cast-grid">
+      <div>
+        <h2>Casting aberto.</h2>
+        <p class="lede" style="margin-top:22px">Poucas vagas por mês. Responda com honestidade — quanto mais real a informação, mais rápida a resposta.</p>
+        <p style="color:var(--fumaca);font-size:14px;max-width:32ch">Suas respostas vão direto para o WhatsApp da agência. Nada é publicado em lugar nenhum.</p>
+      </div>
+
+      <form class="form" id="castingForm">
+        <div class="row">
+          <div><label for="nome">Nome</label><input id="nome" name="nome" required autocomplete="name"></div>
+          <div><label for="zap">WhatsApp</label><input id="zap" name="zap" required inputmode="tel" placeholder="(62) 90000-0000"></div>
+        </div>
+        <div class="row">
+          <div><label for="insta">Instagram</label><input id="insta" name="insta" placeholder="@seuperfil"></div>
+          <div><label for="idade">Idade</label><input id="idade" name="idade" inputmode="numeric" required></div>
+        </div>
+        <div>
+          <label for="fase">Onde você está hoje</label>
+          <select id="fase" name="fase" required>
+            <option value="">Selecione</option>
+            <option>Nunca comecei, quero começar</option>
+            <option>Comecei há pouco, faturo pouco</option>
+            <option>Já faturo, mas travei</option>
+            <option>Faturo bem e quero escalar</option>
+          </select>
+        </div>
+        <div>
+          <label for="faixa">Faturamento médio dos últimos 3 meses</label>
+          <select id="faixa" name="faixa" required>
+            <option value="">Selecione</option>
+            <option>Ainda não faturo</option>
+            <option>Até R$ 2 mil</option>
+            <option>R$ 2 mil a R$ 5 mil</option>
+            <option>R$ 5 mil a R$ 15 mil</option>
+            <option>Acima de R$ 15 mil</option>
+          </select>
+        </div>
+        <div>
+          <label for="obj">O que você espera de uma agência</label>
+          <textarea id="obj" name="obj" placeholder="Escreva do seu jeito."></textarea>
+        </div>
+        <button class="btn" type="submit">Enviar candidatura</button>
+        <small>Ao enviar, abre o WhatsApp com suas respostas prontas. Apenas maiores de 18 anos.</small>
+      </form>
+    </div>
+  </section>
+</main>
+
+<a class="zap-fixo" href="https://wa.me/5562996363181?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20a%20%C3%94mega%21%20Vou%20enviar%20meus%20links%20aqui%20%28Instagram%2C%20Tiktok%20ou%20outro%29%3A" target="_blank" rel="noopener" aria-label="Falar com a Ômega no WhatsApp">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.21 8.21 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.41a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.79.97-.14.16-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.43h-.48c-.16 0-.43.06-.65.31-.22.25-.85.84-.85 2.03 0 1.2.87 2.35.99 2.51.12.16 1.71 2.61 4.14 3.66.58.25 1.03.4 1.38.51.58.19 1.11.16 1.53.1.47-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29Z"/></svg>
+  <span>Falar no WhatsApp</span>
+</a>
+
+<footer class="pe">
+  <div class="wrap">
+    <div class="pe-grid">
+      <div>
+        <a class="brand" href="#topo" aria-label="Ômega Agency">
+          <img class="logo-img" src="logo-omega.png" alt="ÔMEGA">
+        </a>
+        <p style="max-width:32ch">Agência de gestão para criadoras de conteúdo sensível. Goiânia, GO — atendimento em todo o Brasil.</p>
+      </div>
+      <div>
+        <h4>Contato</h4>
+        <p><a href="https://wa.me/5562996363181?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20a%20%C3%94mega%21%20Vou%20enviar%20meus%20links%20aqui%20%28Instagram%2C%20Tiktok%20ou%20outro%29%3A">WhatsApp</a></p>
+        <p><a href="https://instagram.com/omegaagency_ofc">@omegaagency_ofc</a></p>
+      </div>
+      <div>
+        <h4>Navegar</h4>
+        <p><a href="#agencia">A agência</a></p>
+        <p><a href="#servicos">O que fazemos</a></p>
+        <p><a href="#processo">Como funciona</a></p>
+        <p><a href="#casting">Casting</a></p>
+      </div>
+    </div>
+    <div class="pe-base">
+      <span class="selo">18+ — conteúdo destinado a maiores de idade</span>
+      <span>© <span id="ano"></span> Ômega Agency. Todos os direitos reservados.</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Número da agência, formato internacional, só dígitos.
+  const WHATSAPP = "5562996363181";
+
+  document.getElementById("ano").textContent = new Date().getFullYear();
+
+  const barra = document.getElementById("topoBar");
+  const marcaScroll = () => barra.classList.toggle("compacto", window.scrollY > 90);
+  marcaScroll();
+  addEventListener("scroll", marcaScroll, {passive:true});
+
+  const btn = document.getElementById("menuBtn");
+  const painel = document.getElementById("menuPainel");
+  const fecha = () => {
+    document.body.classList.remove("menu-on");
+    btn.setAttribute("aria-expanded","false");
+    btn.setAttribute("aria-label","Abrir menu");
+  };
+  btn.addEventListener("click", () => {
+    const aberto = document.body.classList.toggle("menu-on");
+    btn.setAttribute("aria-expanded", aberto);
+    btn.setAttribute("aria-label", aberto ? "Fechar menu" : "Abrir menu");
+  });
+  painel.querySelectorAll("a").forEach(a => a.addEventListener("click", fecha));
+  addEventListener("keydown", e => { if (e.key === "Escape") fecha(); });
+
+  document.getElementById("castingForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const f = e.target;
+    const v = (id) => (f.elements[id].value || "—").trim();
+    const texto =
+      "Candidatura — Casting Ômega\n\n" +
+      "Nome: " + v("nome") + "\n" +
+      "WhatsApp: " + v("zap") + "\n" +
+      "Instagram: " + v("insta") + "\n" +
+      "Idade: " + v("idade") + "\n" +
+      "Fase: " + v("fase") + "\n" +
+      "Faturamento: " + v("faixa") + "\n" +
+      "Expectativa: " + v("obj");
+    window.open("https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(texto), "_blank");
+  });
+</script>
+</body>
+</html>
